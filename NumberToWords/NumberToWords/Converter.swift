@@ -6,8 +6,17 @@
 //  Copyright © 2020 CG. All rights reserved.
 //
 
+import Foundation
+
 class Converter {
+    
     func convert(_ number: Int) -> String {
-        return "One"
+
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .spellOut
+        let numberString = formatter.string(from: 999999)
+        print(numberString ?? "")
+        
+        return numberString ?? ""
     }
 }

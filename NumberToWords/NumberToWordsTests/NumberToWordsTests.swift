@@ -26,4 +26,11 @@ class NumberToWordsTests: XCTestCase {
         let result = converter.convert(1)
         XCTAssertEqual(result, "One", "Conversion for 1 is incorrect")
     }
+    
+    func testValidConversionInRange() {
+        let result = converter.convert(999999)
+        XCTAssertEqual(result, "nine hundred ninety-nine thousand nine hundred ninety-nine", "Conversion for 999999 is incorrect")
+    }
+    
+    
 }
