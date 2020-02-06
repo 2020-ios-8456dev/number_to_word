@@ -10,20 +10,26 @@ import Foundation
 
 class Converter {
     
+    // Converts the number to words for valid input and "Invalid Input" is used for out of range input
     func convert(_ number: Int) -> String {
-
         let formatter = NumberFormatter()
         formatter.numberStyle = .spellOut
         var numberString = ""
-        if number < 1{
-            numberString = ""
-        }
-        else if number > 999999{
-              numberString = ""
+        if isInputValid(number){
+            numberString = formatter.string(from: NSNumber(value: number)) ?? ""
         }
         else{
-            numberString = formatter.string(from: NSNumber(value: number)) ?? ""
+            numberString = "Invalid Input"
         }
         return numberString
     }
+    
+    //Checks whether the input entered is valid or not?
+    func isInputValid(_ number: Int) -> Bool {
+        if 1...999999 ~= number{
+            return true
+        }
+        return false
+    }
 }
+

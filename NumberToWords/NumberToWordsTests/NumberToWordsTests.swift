@@ -24,7 +24,7 @@ class NumberToWordsTests: XCTestCase {
 
     func testConverstionForZero() {
         let result = converter.convert(0)
-        XCTAssertEqual(result, "", "Conversion for 0 is incorrect")
+        XCTAssertEqual(result, "Invalid Input", "Conversion for 0 is incorrect")
     }
     
     func testValidConversionInRange1() {
@@ -39,12 +39,23 @@ class NumberToWordsTests: XCTestCase {
     
     func testInvalidConversionOutofRange1000000() {
         let result = converter.convert(1000000)
-        XCTAssertEqual(result, "", "Conversion for 1000000 is incorrect")
+        XCTAssertEqual(result, "Invalid Input", "Conversion for 1000000 is incorrect")
     }
     
     func testInvalidConversionOutofRange() {
         let result = converter.convert(1000001)
-        XCTAssertEqual(result, "", "Conversion for 1000001 is incorrect")
+        XCTAssertEqual(result, "Invalid Input", "Conversion for 1000001 is incorrect")
     }
     
+    func testInvalidConversionAlphaNumeric() {
+        let intFromString = Int("3FD") ?? 0
+        let result = converter.convert(intFromString)
+        XCTAssertEqual(result, "Invalid Input", "Conversion for 3FD is incorrect")
+    }
+    
+    func testInvalidConversionFloatingPoint() {
+        let intFromFloat = Int("13.45") ?? 0
+        let result = converter.convert(intFromFloat)
+        XCTAssertEqual(result, "Invalid Input", "Conversion for 13.45 is incorrect")
+    }
 }
