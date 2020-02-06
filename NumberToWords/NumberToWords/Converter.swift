@@ -14,9 +14,16 @@ class Converter {
 
         let formatter = NumberFormatter()
         formatter.numberStyle = .spellOut
-        let numberString = formatter.string(from: 999999)
-        print(numberString ?? "")
-        
-        return numberString ?? ""
+        var numberString = ""
+        if number < 1{
+            numberString = ""
+        }
+        else if number > 999999{
+              numberString = ""
+        }
+        else{
+            numberString = formatter.string(from: NSNumber(value: number)) ?? ""
+        }
+        return numberString
     }
 }

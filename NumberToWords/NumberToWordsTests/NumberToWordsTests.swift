@@ -22,15 +22,29 @@ class NumberToWordsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testValidConversion() {
-        let result = converter.convert(1)
-        XCTAssertEqual(result, "One", "Conversion for 1 is incorrect")
+    func testConverstionForZero() {
+        let result = converter.convert(0)
+        XCTAssertEqual(result, "", "Conversion for 0 is incorrect")
     }
     
-    func testValidConversionInRange() {
+    func testValidConversionInRange1() {
+        let result = converter.convert(1)
+        XCTAssertEqual(result, "one", "Conversion for 1 is incorrect")
+    }
+    
+    func testValidConversionInRange999999() {
         let result = converter.convert(999999)
         XCTAssertEqual(result, "nine hundred ninety-nine thousand nine hundred ninety-nine", "Conversion for 999999 is incorrect")
     }
     
+    func testInvalidConversionOutofRange1000000() {
+        let result = converter.convert(1000000)
+        XCTAssertEqual(result, "", "Conversion for 1000000 is incorrect")
+    }
+    
+    func testInvalidConversionOutofRange() {
+        let result = converter.convert(1000001)
+        XCTAssertEqual(result, "", "Conversion for 1000001 is incorrect")
+    }
     
 }
